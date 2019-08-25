@@ -195,55 +195,7 @@
       
         <h6 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h6><ol>
 <li><p>本文介绍如何搭建个人博客(github-hexo-yilia)<br>&ensp; 本文记录本博客的搭建过程，是最简单的个人博客搭建，如需其他丰富功能和样式，需自行研究。搭建过程依赖环境，请提前安装好: git、npm、node等。</p>
-</li>
-<li><p>主要包括:    </p>
-<ul>
-<li>github建仓库  </li>
-<li>安装hexo和选择主题(yilia)  </li>
-<li>头像、图标、作者姓名、github等链接、描述  </li>
-<li>文章总数、总字数。单个文章的总字数和大概阅读时长  </li>
-<li>网站访问量和访客数  </li>
-<li>评论(gitment)  </li>
-<li>如何发布文章</li>
-</ul>
-</li>
-</ol>
-<h6 id="github建仓库"><a href="#github建仓库" class="headerlink" title="github建仓库"></a>github建仓库</h6><ul>
-<li>登录github创建一个仓库(注意: 仓库名中”.github.io”前面的”jiangbo202”就是github用户名。以后用的个人博客地址就是”xxx.github.io”)<br><img src="/images/pasted-1.png" alt="upload successful">  </li>
-</ul>
-<h6 id="安装hexo和选择主题-yilia"><a href="#安装hexo和选择主题-yilia" class="headerlink" title="安装hexo和选择主题(yilia)"></a>安装hexo和选择主题(yilia)</h6><ul>
-<li>安装hexo命令: <figure class="highlight plain"><figcaption><span>install -g hexo```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+ 在一个目录下比如test_myblog，执行```hexo init test_blog```,test_blog可以任意命名。  </span><br><span class="line">+ 进入test_blog目录，执行命令:  </span><br><span class="line">```git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia``` 会拉取yilia主题的代码</span><br><span class="line">+ 编辑文件test_blog下_config.yaml(themes/yilia/还会有个_config.yaml别搞错了),修改&quot;theme&quot;变量值为&quot;yilia&quot;(注意yaml语法中冒号后面一定要一个空格)，如图:  </span><br><span class="line">![upload successful](/images/pasted-3.png)</span><br><span class="line">+ 这时执行```hexo s```后本地可以访问: ```http://localhost:4000</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><img src="/images/pasted-4.png" alt="upload successful"></p>
-<h6 id="头像、图标、作者姓名、github等链接、描述"><a href="#头像、图标、作者姓名、github等链接、描述" class="headerlink" title="头像、图标、作者姓名、github等链接、描述"></a>头像、图标、作者姓名、github等链接、描述</h6><ul>
-<li>头像、图标、github等链接:<br>&ensp; 编辑<figure class="highlight plain"><figcaption><span>其中favicon是图标，就是浏览器地址栏前面的，avatar是我们说的头像(当然可以是两个图片,我图省事一样了)。这俩个图片得放到```themes/yilia/source```目录下，确保目录正确即可。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">![upload successful](/images/pasted-5.png)  </span><br><span class="line">修改链接为自己的连接也在此文件中(换成自己的就行):</span><br><span class="line">![upload successful](/images/pasted-6.png)</span><br><span class="line"></span><br><span class="line">+ 作者姓名、、描述</span><br><span class="line">&amp;ensp; 编辑```_config.yaml```文件(主题外层的):</span><br><span class="line">![upload successful](/images/pasted-7.png)</span><br><span class="line"></span><br><span class="line">###### 文章总数、总字数。单个文章的总字数和大概阅读时长 </span><br><span class="line">+ 安装依赖```npm i --save hexo-wordcount</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li>添加如下代码到文件: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">&lt;nav&gt;</span><br><span class="line">总文章数 &lt;%=site.posts.length%&gt;</span><br><span class="line">&lt;/nav&gt;</span><br><span class="line">总字数 &lt;span class=&quot;post-count&quot;&gt;&lt;%= totalcount(site, &apos;0,0.0a&apos;) %&gt;&lt;/span&gt;```  </span><br><span class="line">如图:</span><br><span class="line">![upload successful](/images/pasted-8.png)</span><br><span class="line">效果如图:</span><br><span class="line">![upload successful](/images/pasted-9.png)</span><br><span class="line">+ 添加如下代码到文件:     ```themes/yilia/layout/_partial/article.ejs```的header标签内:</span><br><span class="line">![upload successful](/images/pasted-10.png)</span><br><span class="line">效果图:</span><br><span class="line">![upload successful](/images/pasted-12.png)  </span><br><span class="line"></span><br><span class="line">###### 网站访问量和访客数</span><br><span class="line">+ 添加如下代码: 到文件```themes/yilia/layout/_partial/footer.ejs</span><br></pre></td></tr></table></figure></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;    本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次&lt;/span&gt;</span><br><span class="line">&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;  本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次&lt;/span&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如图:<br><img src="/images/pasted-13.png" alt="upload successful"></p>
-<ul>
-<li>添加如下代码: 到文件themes/yilia/layout/_partial/after-footer.ejs<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>效果如图:<br><img src="/images/pasted-14.png" alt="upload successful"><br>注: 这个数字是localhost的次数。</p>
-<h6 id="评论-gitment"><a href="#评论-gitment" class="headerlink" title="评论(gitment)"></a>评论(gitment)</h6><ul>
-<li><p>修改文件: themes/yilia/layout/_partial/post/gitment.ejs<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">中css和js文件地址为:</span><br><span class="line">```    &lt;link rel=&quot;stylesheet&quot; href=&quot;//billts.site/extra_css/gitment.css&quot;&gt;</span><br><span class="line">    &lt;script src=&quot;//billts.site/js/gitment.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>注册oauth application: <a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">https://github.com/settings/applications/new</a><br><img src="/images/pasted-15.png" alt="upload successful"><br>填完后，会得到Client ID和Client Secret。 </p>
-</li>
-<li><p>在github新建一个空的repo用于放评论，比如我的是blogtalk</p>
-</li>
-<li><p>最后将这些配置到<br><code>themes/yilia/_config.yml</code><br><img src="/images/pasted-16.png" alt="upload successful"><br>效果如图:<br><img src="/images/pasted-17.png" alt="upload successful"><br>这里提示”未初始化”，需要自己登陆评论一下。</p>
-</li>
-</ul>
-<h5 id="如何发布文章"><a href="#如何发布文章" class="headerlink" title="如何发布文章"></a>如何发布文章</h5><ul>
-<li>安装<code>npm install --save hexo-admin</code>后，即可访问<code>http://localhost:4000/admin/#/</code>在这上面使用markdown语法写博客内容。</li>
-<li>修改<code>_config.yml</code>为自己的github信息，如图<br><img src="/images/pasted-19.png" alt="upload successful"></li>
-<li>使用命令<code>hexo g</code>生成文件，再使用命令<code>hexo d</code>发布到自己的博客上。</li>
-</ul>
-
+        
       
 
       
@@ -251,6 +203,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -457,6 +420,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
