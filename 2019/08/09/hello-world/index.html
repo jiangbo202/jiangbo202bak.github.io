@@ -361,21 +361,20 @@
 
   
   <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//billts.site/extra_css/gitment.css">
-<script src="//billts.site/js/gitment.js"></script>
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/08/09/hello-world/",
-  owner: 'jiangbo202',
-  repo: 'blogtalk',
+  id: "<%=url%>",
+  owner: '<%=theme.gitment_owner%>',
+  repo: '<%=theme.gitment_repo%>',
   oauth: {
-    client_id: 'f1d93747c623f08679d8',
-    client_secret: '291696cd2a8748ef8fda41633a1ade748c8f8098',
+    client_id: '<%=theme.gitment_oauth.client_id%>',
+    client_secret: '<%=theme.gitment_oauth.client_secret%>',
   },
 })
 gitment.render('gitment-ctn')
 </script>
-
   
 
 
